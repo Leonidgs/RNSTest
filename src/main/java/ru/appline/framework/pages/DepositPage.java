@@ -1,5 +1,6 @@
 package ru.appline.framework.pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,7 @@ public class DepositPage extends BasePage{
     WebElement toBeWithdrawnAfter;
 
     //Выбираем валюту депозита
+    @Step("Выбрать валюту {name}")
     public DepositPage chooseCurrencyByType(String name) {
        for(WebElement elem : depositList) {
             //System.out.println(elem.getAttribute("innerText"));
@@ -54,11 +56,13 @@ public class DepositPage extends BasePage{
         return this;
     }
     //Ставим значение депозита
+    @Step("Установить значение депозита {value}")
     public DepositPage setAmountValue(String value) {
         amountField.sendKeys(value);
         return this;
     }
     //Выбираем срок депозита
+    @Step("Выбрать срок депозита {time}")
     public DepositPage selectDepositTime(DepositTime time) {
         String value = "";
         switch (time) {
@@ -77,11 +81,13 @@ public class DepositPage extends BasePage{
         return this;
     }
     //Ежемесячно пополняем
+    @Step("Пополнять ежемесячно на сумму {value}")
     public DepositPage setReplenishValue(String value) {
         replenishField.sendKeys(value);
         return this;
     }
     //Включаем ежемесячную капитализацию
+    @Step("Включить поле {name}")
     public DepositPage turnOnReplenishField(String name) {
         for (WebElement elem : additionalOptions) {
             //System.out.println(elem.getText());
@@ -93,12 +99,12 @@ public class DepositPage extends BasePage{
         Assert.fail("Включить поле" + name + "' не удалось!");
         return this;
     }
-
+    @Step("Проверить поле Начислено%= {expectedValue}")
     public DepositPage checkRightValueFields(String expectedValue) {
         fieldChecker(accruedPercent, expectedValue);
         return this;
     }
-
+    @Step("Проверить поле Пополнение за 6мес= {value}")
     public DepositPage checkReplenishment(String value) {
         fieldChecker(replenishmentValue, value);
         return this;
@@ -112,6 +118,7 @@ public class DepositPage extends BasePage{
         Assert.fail("Ставка " + value + " не была сконфигурирована ");
         return this;
     }*/
+    @Step("Проверить поле к снятию через 6мес= {value}")
     public DepositPage checkToBeWithdrawnAfter(String value) {
         fieldChecker(toBeWithdrawnAfter, value);
         return this;

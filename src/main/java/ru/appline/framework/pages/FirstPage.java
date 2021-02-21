@@ -1,5 +1,6 @@
 package ru.appline.framework.pages;
 
+import io.qameta.allure.Step;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,8 @@ public class FirstPage extends BasePage {
     @FindBy(xpath = "//a[@class='service__title-action']")
     List<WebElement> menuList;
 
+    //Выбор вклады
+    @Step("Переход в главное меню {name}")
     public DepositPage selectMenuByName(String name) {
 
         for (WebElement elem3 : menuList) {

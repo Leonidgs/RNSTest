@@ -4,9 +4,7 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import ru.appline.framework.basetestsclass.BaseTests;
-
-import static ru.appline.framework.utils.DepositTime.Month12;
-import static ru.appline.framework.utils.DepositTime.Month6;
+import static ru.appline.framework.utils.DepositTime.*;
 
 public class FirstTest extends BaseTests {
 
